@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation des Détails - RDC Congo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .confirmation-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confirmation-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-title {
+            color: #1a365d;
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #e53e3e;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .main-content {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #2d3748;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .info-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .field-label {
+            width: 150px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .field-value {
+            flex: 1;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #2d3748;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .field-value::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 4px,
+                rgba(255, 255, 255, 0.8) 4px,
+                rgba(255, 255, 255, 0.8) 8px
+            );
+        }
+
+        .declarations-section {
+            margin-top: 30px;
+        }
+
+        .declarations-title {
+            color: #2d3748;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .declaration-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 8px 0;
+        }
+
+        .declaration-bullet {
+            width: 8px;
+            height: 8px;
+            background: #2d3748;
+            border-radius: 50%;
+            margin: 6px 12px 0 0;
+            flex-shrink: 0;
+        }
+
+        .declaration-text {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .btn-previous {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn-previous:hover {
+            background: #cbd5e0;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .security-badge {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .security-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #4CAF50;
+            border-radius: 50%;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .security-text {
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .security-subtext {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .lang-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang="fr"] {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .main-title {
+                font-size: 24px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .info-field {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .field-label {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <span id="currentLanguage">FR</span>
+        </button>
+    </div>
+
+    <div class="confirmation-container">
+        <div class="header-section">
+            <h1 class="main-title" data-lang="fr">PLEASE CONFIRM YOUR DETAILS</h1>
+            <h1 class="main-title" data-lang="en">PLEASE CONFIRM YOUR DETAILS</h1>
+            <h1 class="main-title" data-lang="es">POR FAVOR CONFIRME SUS DETALLES</h1>
+            
+            <p class="subtitle" data-lang="fr">Nous vous prions de bien vouloir vérifier attentivement vos informations avant de les soumettre.</p>
+            <p class="subtitle" data-lang="en">We kindly ask you to carefully check your information before submitting it.</p>
+            <p class="subtitle" data-lang="es">Le rogamos que revise cuidadosamente su información antes de enviarla.</p>
+        </div>
+
+        <div class="main-content">
+            <div class="section-title" data-lang="fr">INFORMATIONS PERSONNELLES</div>
+            <div class="section-title" data-lang="en">PERSONAL INFORMATION</div>
+            <div class="section-title" data-lang="es">INFORMACIÓN PERSONAL</div>
+
+            <div class="info-field">
+                <div class="field-label" data-lang="fr">Prénom</div>
+                <div class="field-label" data-lang="en">First name</div>
+                <div class="field-label" data-lang="es">Nombre</div>
+                <div class="field-value" id="firstName">John</div>
+            </div>
+
+            <div class="info-field">
+                <div class="field-label" data-lang="fr">Nom de famille</div>
+                <div class="field-label" data-lang="en">Last name</div>
+                <div class="field-label" data-lang="es">Apellido</div>
+                <div class="field-value" id="lastName">Doe</div>
+            </div>
+
+            <div class="info-field">
+                <div class="field-label" data-lang="fr">Genre</div>
+                <div class="field-label" data-lang="en">Gender</div>
+                <div class="field-label" data-lang="es">Género</div>
+                <div class="field-value" id="gender">Masculin</div>
+            </div>
+
+            <div class="info-field">
+                <div class="field-label" data-lang="fr">Numéro de téléphone:</div>
+                <div class="field-label" data-lang="en">Phone number:</div>
+                <div class="field-label" data-lang="es">Número de teléfono:</div>
+                <div class="field-value" id="phoneNumber">+243 123 456 789</div>
+            </div>
+
+            <div class="declarations-section">
+                <div class="declarations-title" data-lang="fr">Veuillez sélectionner:</div>
+                <div class="declarations-title" data-lang="en">Please, select:</div>
+                <div class="declarations-title" data-lang="es">Por favor, seleccione:</div>
+
+                <div class="declaration-item">
+                    <div class="declaration-bullet"></div>
+                    <div class="declaration-text" data-lang="fr">J'ai lu et accepté les Conditions Générales.</div>
+                    <div class="declaration-text" data-lang="en">I have read and accepted the Terms and Conditions.</div>
+                    <div class="declaration-text" data-lang="es">He leído y aceptado los Términos y Condiciones.</div>
+                </div>
+
+                <div class="declaration-item">
+                    <div class="declaration-bullet"></div>
+                    <div class="declaration-text" data-lang="fr">Je déclare que les données fournies sont vraies et je me soumets aux sanctions établies par la loi pour vérifier toute fausse information.</div>
+                    <div class="declaration-text" data-lang="en">I declare that the data provided are true and I submit to the sanctions established by law to check any false information.</div>
+                    <div class="declaration-text" data-lang="es">Declaro que los datos proporcionados son verdaderos y me someto a las sanciones establecidas por la ley para verificar cualquier información falsa.</div>
+                </div>
+
+                <div class="declaration-item">
+                    <div class="declaration-bullet"></div>
+                    <div class="declaration-text" data-lang="fr">Je déclare que les informations fournies sont vraies et je me soumets aux pénalités établies par la loi pour vérifier toute fausse information.</div>
+                    <div class="declaration-text" data-lang="en">I declare that the information provided is true and I submit to the penalties established by law for checking any false information.</div>
+                    <div class="declaration-text" data-lang="es">Declaro que la información proporcionada es verdadera y me someto a las penas establecidas por la ley para verificar cualquier información falsa.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-previous" onclick="goPrevious()">
+                <i class="fas fa-arrow-left"></i>
+                <span data-lang="fr">Précédent</span>
+                <span data-lang="en">Previous</span>
+                <span data-lang="es">Anterior</span>
+            </button>
+            
+            <button class="btn btn-submit" onclick="submitForm()">
+                <i class="fas fa-check"></i>
+                <span data-lang="fr">Soumettre</span>
+                <span data-lang="en">Submit</span>
+                <span data-lang="es">Enviar</span>
+            </button>
+        </div>
+
+        <div class="security-badge">
+            <div class="security-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="security-text">SECURE</div>
+            <div class="security-subtext">SSL ENCRYPTION</div>
+        </div>
+    </div>
+
+    <script>
+        let currentLanguage = 'fr';
+
+        function toggleLanguage() {
+            const languages = ['fr', 'en', 'es'];
+            const currentIndex = languages.indexOf(currentLanguage);
+            const nextIndex = (currentIndex + 1) % languages.length;
+            currentLanguage = languages[nextIndex];
+            
+            // Update language button text
+            const langTexts = { 'fr': 'FR', 'en': 'EN', 'es': 'ES' };
+            document.getElementById('currentLanguage').textContent = langTexts[currentLanguage];
+            
+            // Show/hide elements based on language
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                element.style.display = 'none';
+            });
+            
+            document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach(element => {
+                element.style.display = 'block';
+            });
+        }
+
+        function goPrevious() {
+            if (confirm('Êtes-vous sûr de vouloir revenir en arrière ?')) {
+                window.history.back();
+            }
+        }
+
+        function submitForm() {
+            // Show loading state
+            const submitBtn = document.querySelector('.btn-submit');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span data-lang="fr">Soumission...</span><span data-lang="en">Submitting...</span><span data-lang="es">Enviando...</span>';
+            submitBtn.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                // Redirect to payment page
+                window.location.href = 'payment.html';
+            }, 2000);
+        }
+
+        // Load form data from localStorage if available
+        function loadFormData() {
+            const formData = JSON.parse(localStorage.getItem('formData') || '{}');
+            
+            if (formData.firstName) {
+                document.getElementById('firstName').textContent = formData.firstName;
+            }
+            if (formData.lastName) {
+                document.getElementById('lastName').textContent = formData.lastName;
+            }
+            if (formData.gender) {
+                document.getElementById('gender').textContent = formData.gender;
+            }
+            if (formData.phoneNumber) {
+                document.getElementById('phoneNumber').textContent = formData.phoneNumber;
+            }
+        }
+
+        // Initialize language and load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleLanguage(); // This will set French as default
+            loadFormData();
+        });
+    </script>
+</body>
+</html> 
